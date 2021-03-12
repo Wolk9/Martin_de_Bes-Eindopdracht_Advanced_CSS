@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+
+$tm_footer_color: #686de0;
+$background_color: #c3cfe2;
+$tm_body_color: #ffffff;
+$body_text_color: #111111;
+$footer_text_color: #eeeeee;
+$footer_url_color: #686ce04f;
+
+
+
+
+/* Global */
+* {
+    box-sizing: border-box;
+    background-color: $background_color;
+}
+/* Testimonial Card text behavior*/
+.tm {
+    font-family: "lato", sans-serif;
+    color: $body_text_color;
+    background-color: $tm_body_color;
+    font-weight: 400;
+    font-size: 16pt;
+    line-height: 24pt;
+}   
+.tm__footer {
+        font-family: "lato", sans-serif;
+        color: $footer_text_color;
+        text-align: center;
+
+        &__h1 {
+            font-weight: 600;
+            font-size: 16pt;
+            text-transform: uppercase;
+        }
+
+        &__url, a {
+            font-size: 14pt;
+            color: $footer_url_color;
+            text-decoration: none;
+
+            &:link {
+                text-decoration: none;
+            }
+
+            &:visited {
+                text-decoration: none;
+            }
+
+            &:hover {
+                color: #ffffff;
+            }
+
+        }
+    }
+/* Testimonial Card grid*/
+
+.tm__frame {
+    display: grid;
+    grid-template-areas:
+    'body'
+    'mid'
+    'footer';
+    grid-template-rows: 350px 0px 150px;
+    width: 450px;
+    margin: 20px 20px 20px 20px;    
+}
+
+.tm__frame--body {
+    grid-area: body;
+    background-color: $tm_body_color;
+    padding: 5% 15%;
+    border-radius: 20px 20px 0px 0px;
+    }
+
+.tm__frame--footer {
+    grid-area: footer;
+    background-color: $tm_footer_color;
+    padding: 0% 15%;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.tm__frame--mid {
+    grid-area: mid;
+    border: 4px solid white;
+    border-radius: 100%;
+}
+
+.tm__avatar--picture img {
+        width: 100px;
+        height: 100px;
+    }
+
+
