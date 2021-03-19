@@ -2,6 +2,9 @@
 /* Global */
 * {
   box-sizing: border-box;
+}
+
+body {
   background-color: #c3cfe2;
 }
 
@@ -9,10 +12,9 @@
 .tm {
   font-family: "lato", sans-serif;
   color: #111111;
-  background-color: #ffffff;
   font-weight: 400;
-  font-size: 16pt;
-  line-height: 24pt;
+  font-size: 17pt;
+  line-height: 1.5em;
 }
 
 .tm__footer {
@@ -23,53 +25,65 @@
 .tm__footer__h1 {
   font-weight: 600;
   font-size: 16pt;
+  line-height: 2em;
   text-transform: uppercase;
 }
-.tm__footer__url, .tm__footer a {
+.tm__footer__url,
+.tm__footer a {
   font-size: 14pt;
-  color: #686ce04f;
+  line-height: 2em;
+  color: #b4b6f0;
   text-decoration: none;
 }
-.tm__footer__url:link, .tm__footer a:link {
+.tm__footer__url:link,
+.tm__footer a:link {
   text-decoration: none;
 }
-.tm__footer__url:visited, .tm__footer a:visited {
+.tm__footer__url:visited,
+.tm__footer a:visited {
   text-decoration: none;
 }
-.tm__footer__url:hover, .tm__footer a:hover {
+.tm__footer__url:hover,
+.tm__footer a:hover {
   color: #ffffff;
 }
 
 /* Testimonial Card grid*/
-.tm__frame {
+.tm__grid--container {
   display: grid;
-  grid-template-areas: "body" "mid" "footer";
   grid-template-rows: 350px 0px 150px;
-  width: 450px;
-  margin: 20px 20px 20px 20px;
+  row-gap: 0px;
+  justify-items: center;
+  grid-auto-flow: column;
+  padding: 20px;
+  margin: 10px;
+  width: 400px;
 }
-
-.tm__frame--body {
-  grid-area: body;
+.tm__grid--body {
   background-color: #ffffff;
-  padding: 5% 15%;
+  padding: 5% 10% 10% 10%;
+  min-height: 350px;
   border-radius: 20px 20px 0px 0px;
+  box-shadow: grey 0.2em 0.2em 0.3em;
+  z-index: -1;
 }
-
-.tm__frame--footer {
-  grid-area: footer;
-  background-color: #686de0;
-  padding: 0% 15%;
-  border-radius: 0px 0px 20px 20px;
+.tm__grid--mid {
+  height: 0px;
 }
-
-.tm__frame--mid {
-  grid-area: mid;
-  border: 4px solid white;
-  border-radius: 100%;
-}
-
-.tm__avatar--picture img {
+.tm__grid--mid img {
+  margin-top: -50px;
   width: 100px;
   height: 100px;
+  border-radius: 100%;
+  border: 5px solid #ffffff;
+  z-index: 0;
+}
+.tm__grid--footer {
+  min-height: 150px;
+  width: 400px;
+  padding: 50px 5% 5% 5%;
+  border-radius: 0px 0px 20px 20px;
+  box-shadow: grey 0.2em 0.2em 0.3em;
+  background-color: #686de0;
+  z-index: -1;
 }/*# sourceMappingURL=styles.css.map */
