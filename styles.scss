@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+/* Variables */
 
 $tm_footer_color: #686de0;
 $background_color: #c3cfe2;
@@ -7,6 +7,8 @@ $body_text_color: #111111;
 $footer_text_color: #eeeeee;
 $footer_url_color: #b4b6f0;
 $tm_width: 400px;
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
 
 /* Global */
 * {
@@ -58,9 +60,16 @@ body {
   }
 }
 
-/* Testimonial Card grid*/
+@mixin on-hover-resolve-to-button {
+  &:hover {
+    position: relative;
+    opacity: 0.1;
+  }
+}
 
-.tm__grid {
+/* Testimonial Card grid (level 1) */
+
+.tm__card {
   &--container {
     display: grid;
     grid-template-rows: 350px 0px 150px;
@@ -70,6 +79,7 @@ body {
     padding: 20px;
     margin: 10px;
     width: $tm_width;
+    @include on-hover-resolve-to-button();
   }
 
   &--body {
@@ -78,7 +88,6 @@ body {
     min-height: 350px;
     border-radius: 20px 20px 0px 0px;
     box-shadow: grey 0.2em 0.2em 0.3em;
-    z-index: -1;
   }
 
   &--mid {
@@ -90,7 +99,7 @@ body {
       height: 100px;
       border-radius: 100%;
       border: 5px solid $tm_body_color;
-      z-index: 0;
+      position: relative;
     }
   }
 
@@ -101,6 +110,26 @@ body {
     border-radius: 0px 0px 20px 20px;
     box-shadow: grey 0.2em 0.2em 0.3em;
     background-color: $tm_footer_color;
-    z-index: -1;
+  }
+}
+
+/* Portfolio Grid (level 2) */
+
+.tm__grid {
+  &--container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+  }
+
+  &--item {
+    flex-grow: 1;
+    transition-property: opacity;
+    transition-duration: 3s;
+    transition-delay: 1s;
+    transition-timing-function: ease-in;
   }
 }

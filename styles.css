@@ -1,3 +1,4 @@
+/* Variables */
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
 /* Global */
 * {
@@ -48,8 +49,8 @@ body {
   color: #ffffff;
 }
 
-/* Testimonial Card grid*/
-.tm__grid--container {
+/* Testimonial Card grid (level 1) */
+.tm__card--container {
   display: grid;
   grid-template-rows: 350px 0px 150px;
   row-gap: 0px;
@@ -59,31 +60,50 @@ body {
   margin: 10px;
   width: 400px;
 }
-.tm__grid--body {
+.tm__card--container:hover {
+  position: relative;
+  opacity: 0.1;
+}
+.tm__card--body {
   background-color: #ffffff;
   padding: 5% 10% 10% 10%;
   min-height: 350px;
   border-radius: 20px 20px 0px 0px;
   box-shadow: grey 0.2em 0.2em 0.3em;
-  z-index: -1;
 }
-.tm__grid--mid {
+.tm__card--mid {
   height: 0px;
 }
-.tm__grid--mid img {
+.tm__card--mid img {
   margin-top: -50px;
   width: 100px;
   height: 100px;
   border-radius: 100%;
   border: 5px solid #ffffff;
-  z-index: 0;
+  position: relative;
 }
-.tm__grid--footer {
+.tm__card--footer {
   min-height: 150px;
   width: 400px;
   padding: 50px 5% 5% 5%;
   border-radius: 0px 0px 20px 20px;
   box-shadow: grey 0.2em 0.2em 0.3em;
   background-color: #686de0;
-  z-index: -1;
+}
+
+/* Portfolio Grid (level 2) */
+.tm__grid--container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+.tm__grid--item {
+  flex-grow: 1;
+  transition-property: opacity;
+  transition-duration: 3s;
+  transition-delay: 1s;
+  transition-timing-function: ease-in;
 }/*# sourceMappingURL=styles.css.map */
