@@ -51,43 +51,70 @@ body {
 
 /* Testimonial Card grid (level 1) */
 .tm__card--container {
+  z-index: 10;
   display: grid;
   grid-template-rows: 350px 0px 150px;
   row-gap: 0px;
   justify-items: center;
   grid-auto-flow: column;
-  padding: 20px;
-  margin: 10px;
+  margin: 20px;
   width: 400px;
+  min-height: 500px;
+  border-radius: 20px;
+  box-shadow: grey 0.2em 0.2em 0.3em;
+  background-color: #222222;
 }
-.tm__card--container:hover {
+.tm__card--card {
   position: relative;
+  top: -350px;
+  z-index: 10;
+  transition-property: opacity;
+  transition-duration: 1s;
+  transition-delay: 0s;
+  transition-timing-function: ease-in-out;
+}
+.tm__card--card:hover {
   opacity: 0.1;
 }
+.tm__card--card button.ontop {
+  opacity: 0;
+  z-index: 40;
+  transition-property: opacity;
+  transition-duration: 1s;
+  transition-delay: 0s;
+  transition-timing-function: ease-in-out;
+}
+.tm__card--card button.ontop:hover {
+  opacity: 1;
+}
 .tm__card--body {
+  z-index: 20;
   background-color: #ffffff;
   padding: 5% 10% 10% 10%;
   min-height: 350px;
   border-radius: 20px 20px 0px 0px;
-  box-shadow: grey 0.2em 0.2em 0.3em;
 }
 .tm__card--mid {
+  z-index: 30;
   height: 0px;
+  width: 400px;
 }
 .tm__card--mid img {
-  margin-top: -50px;
+  position: absolute;
+  top: -50px;
+  margin-left: 39%;
   width: 100px;
   height: 100px;
-  border-radius: 100%;
+  border-radius: 50%;
   border: 5px solid #ffffff;
   position: relative;
 }
 .tm__card--footer {
+  z-index: 20;
   min-height: 150px;
   width: 400px;
   padding: 50px 5% 5% 5%;
   border-radius: 0px 0px 20px 20px;
-  box-shadow: grey 0.2em 0.2em 0.3em;
   background-color: #686de0;
 }
 
@@ -96,14 +123,13 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
   justify-content: flex-start;
   align-items: flex-start;
   align-content: flex-start;
 }
 .tm__grid--item {
   flex-grow: 1;
-  transition-property: opacity;
-  transition-duration: 3s;
-  transition-delay: 1s;
-  transition-timing-function: ease-in;
+  width: 400px;
 }/*# sourceMappingURL=styles.css.map */

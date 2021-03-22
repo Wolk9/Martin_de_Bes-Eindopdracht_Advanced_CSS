@@ -2,6 +2,7 @@
 
 $tm_footer_color: #686de0;
 $background_color: #c3cfe2;
+$hover_background_color: #222222;
 $tm_body_color: #ffffff;
 $body_text_color: #111111;
 $footer_text_color: #eeeeee;
@@ -9,6 +10,25 @@ $footer_url_color: #b4b6f0;
 $tm_width: 400px;
 
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+
+@mixin transition($transition-type, $transition-type2: null) {
+  transition-property: $transition-type, $transition-type2;
+  transition-duration: 1s;
+  transition-delay: 0s;
+  transition-timing-function: ease-in-out;
+}
+
+@mixin on-hover-resolve-to-button($opacity-value) {
+  &:hover {
+    opacity: $opacity-value;
+  }
+}
+
+@mixin on-hover-change-background {
+  &:hover {
+    background-color: $hover_background_color;
+  }
+}
 
 /* Global */
 * {
@@ -60,56 +80,73 @@ body {
   }
 }
 
-@mixin on-hover-resolve-to-button {
-  &:hover {
-    position: relative;
-    opacity: 0.1;
-  }
-}
-
 /* Testimonial Card grid (level 1) */
 
 .tm__card {
   &--container {
+    z-index: 10;
     display: grid;
     grid-template-rows: 350px 0px 150px;
     row-gap: 0px;
     justify-items: center;
     grid-auto-flow: column;
-    padding: 20px;
-    margin: 10px;
+    margin: 20px;
     width: $tm_width;
-    @include on-hover-resolve-to-button();
+    min-height: 500px;
+    border-radius: 20px;
+    box-shadow: grey 0.2em 0.2em 0.3em;
+    background-color: $hover_background_color;
+  }
+
+  &--card {
+    position: relative;
+    top: -350px;
+    z-index: 10;
+    @include transition(opacity);
+    @include on-hover-resolve-to-button(0.1);
+
+    button.ontop {
+      opacity: 0;
+      z-index: 40;
+      @include transition(opacity);
+      @include on-hover-resolve-to-button(1);
+    }
   }
 
   &--body {
+    z-index: 20;
     background-color: $tm_body_color;
     padding: 5% 10% 10% 10%;
     min-height: 350px;
     border-radius: 20px 20px 0px 0px;
-    box-shadow: grey 0.2em 0.2em 0.3em;
   }
 
   &--mid {
+    z-index: 30;
     height: 0px;
-
+    width: $tm_width;
     img {
-      margin-top: -50px;
+      position: absolute;
+      top: -50px;
+      margin-left: 39%;
       width: 100px;
       height: 100px;
-      border-radius: 100%;
+      border-radius: 50%;
       border: 5px solid $tm_body_color;
       position: relative;
     }
   }
 
   &--footer {
+    z-index: 20;
     min-height: 150px;
     width: $tm_width;
     padding: 50px 5% 5% 5%;
     border-radius: 0px 0px 20px 20px;
-    box-shadow: grey 0.2em 0.2em 0.3em;
     background-color: $tm_footer_color;
+    // @include transition(background-color, opacity);
+    // @include on-hover-resolve-to-button(0.1);
+    // @include on-hover-change-background();
   }
 }
 
@@ -120,6 +157,8 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    row-gap: 20px
+    column-gap: 20px;
     justify-content: flex-start;
     align-items: flex-start;
     align-content: flex-start;
@@ -127,9 +166,6 @@ body {
 
   &--item {
     flex-grow: 1;
-    transition-property: opacity;
-    transition-duration: 3s;
-    transition-delay: 1s;
-    transition-timing-function: ease-in;
+    width: $tm_width;
   }
 }
