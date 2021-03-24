@@ -51,7 +51,7 @@ body {
 }
 
 /* Portfolio Grid (level 2) */
-.tm__grid--container {
+.tm__grid__container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -62,13 +62,13 @@ body {
   align-items: flex-start;
   align-content: flex-start;
 }
-.tm__grid--item {
+.tm__grid__item {
   flex-grow: 1;
   width: 400px;
 }
 
 /* Testimonial Card grid (level 1) */
-.tm__card--container {
+.tm__card__container {
   position: relative;
   z-index: 0;
   display: grid;
@@ -86,13 +86,13 @@ body {
   transition-delay: 0s;
   transition-timing-function: ease-in-out;
 }
-.tm__card--container:hover tm__card--container {
+.tm__card__container:hover {
   opacity: 0.1;
 }
-.tm__card--container:hover tm__card--on-top > button {
+.tm__card__container:hover tm__card--on-top > button {
   opacity: 1;
 }
-.tm__card--card {
+.tm__card__card {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -101,8 +101,15 @@ body {
   z-index: 10;
   border-radius: 20px;
   box-shadow: grey 0.2em 0.2em 0.3em;
+  transition-property: opacity;
+  transition-duration: 1s;
+  transition-delay: 0s;
+  transition-timing-function: ease-in-out;
 }
-.tm__card--body {
+.tm__card__card:hover {
+  opacity: 0.1;
+}
+.tm__card__body {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -112,7 +119,7 @@ body {
   min-height: 350px;
   border-radius: 20px 20px 0px 0px;
 }
-.tm__card--mid {
+.tm__card__mid {
   position: absolute;
   top: 350px;
   left: 0px;
@@ -120,7 +127,7 @@ body {
   min-height: 0px;
   width: 400px;
 }
-.tm__card--mid > img {
+.tm__card__mid > img {
   margin-top: -50px;
   margin-left: 39%;
   width: 100px;
@@ -128,7 +135,7 @@ body {
   border-radius: 50%;
   border: 5px solid #ffffff;
 }
-.tm__card--footer {
+.tm__card__footer {
   position: absolute;
   top: 350px;
   left: 0px;
@@ -139,24 +146,22 @@ body {
   border-radius: 0px 0px 20px 20px;
   background-color: #686de0;
 }
-.tm__card--on-top {
+.tm__card__on-top--btn {
   position: absolute;
-  z-index: 40;
-  top: 50%;
+  top: -50%;
   left: 39%;
-  margin: 0 auto;
   opacity: 0;
+  color: white;
+  width: 120px;
+  height: 50px;
+  border-radius: 5px;
+  z-index: 50;
   transition-property: opacity;
   transition-duration: 1s;
   transition-delay: 0s;
   transition-timing-function: ease-in-out;
 }
-.tm__card--on-top button {
-  background-color: #b4b6f0;
-  color: white;
-  width: 100px;
-  height: 30px;
-  border-radius: 5px;
-  display: none;
-  z-index: 50;
+.tm__card__on-top--btn:hover {
+  display: inline;
+  opacity: 1;
 }/*# sourceMappingURL=styles.css.map */

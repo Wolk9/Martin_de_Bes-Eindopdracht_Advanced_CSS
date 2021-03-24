@@ -93,7 +93,7 @@ body {
 /* Portfolio Grid (level 2) */
 
 .tm__grid {
-  &--container {
+  &__container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -104,7 +104,7 @@ body {
     align-content: flex-start;
   }
 
-  &--item {
+  &__item {
     flex-grow: 1;
     width: $tm_width;
   }
@@ -113,7 +113,7 @@ body {
 /* Testimonial Card grid (level 1) */
 
 .tm__card {
-  &--container {
+  &__container {
     position: relative;
     z-index: 0;
     display: grid;
@@ -131,7 +131,7 @@ body {
     transition-delay: 0s;
     transition-timing-function: ease-in-out;
 
-    &:hover tm__card--container {
+    &:hover {
       opacity: 0.1;
     }
 
@@ -140,7 +140,7 @@ body {
     }
   }
 
-  &--card {
+  &__card {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -149,9 +149,17 @@ body {
     z-index: 10;
     border-radius: 20px;
     box-shadow: grey 0.2em 0.2em 0.3em;
+    transition-property: opacity;
+    transition-duration: 1s;
+    transition-delay: 0s;
+    transition-timing-function: ease-in-out;
+
+    &:hover {
+      opacity: 0.1;
+    }
   }
 
-  &--body {
+  &__body {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -162,7 +170,7 @@ body {
     border-radius: 20px 20px 0px 0px;
   }
 
-  &--mid {
+  &__mid {
     position: absolute;
     top: 350px;
     left: 0px;
@@ -180,7 +188,7 @@ body {
     }
   }
 
-  &--footer {
+  &__footer {
     position: absolute;
     top: 350px;
     left: 0px;
@@ -190,31 +198,29 @@ body {
     padding: 50px 5% 5% 5%;
     border-radius: 0px 0px 20px 20px;
     background-color: $tm_footer_color;
-    // @include transition(background-color, opacity);
-    // @include on-hover-change-opacity (0.1);
-    // @include on-hover-change-background();
   }
 
-  &--on-top {
-    position: absolute;
-    z-index: 40;
-    top: 50%;
-    left: 39%;
-    margin: 0 auto;
-    opacity: 0;
-    transition-property: opacity;
-    transition-duration: 1s;
-    transition-delay: 0s;
-    transition-timing-function: ease-in-out;
-
-    button {
-      background-color: #b4b6f0;
+  &__on-top {
+    &--btn {
+      position: absolute;
+      top: -50%;
+      left: 39%;
+      opacity: 0;
+      // display: none;
       color: white;
-      width: 100px;
-      height: 30px;
+      width: 120px;
+      height: 50px;
       border-radius: 5px;
-      display: none;
       z-index: 50;
+      transition-property: opacity;
+      transition-duration: 1s;
+      transition-delay: 0s;
+      transition-timing-function: ease-in-out;
+
+      &:hover {
+        display: inline;
+        opacity: 1;
+      }
     }
   }
 }
