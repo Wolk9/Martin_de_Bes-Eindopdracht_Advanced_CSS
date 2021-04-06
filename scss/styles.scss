@@ -1,43 +1,8 @@
 /* Variables */
 
-$tm_footer_color: #686de0;
-$background_color: #c3cfe2;
-$hover_background_color: #222222;
-$tm_body_color: #ffffff;
-$body_text_color: #111111;
-$footer_text_color: #eeeeee;
-$footer_url_color: #b4b6f0;
-$tm_width: 400px;
-$tm_body_height: 350px;
-$tm_mid_height: 0px;
-$tm_footer_height: 150px;
+@use "./variables" as *;
 
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
-
-// @mixin transition($transition-type, $transition-type2: null) {
-//   transition-property: $transition-type, $transition-type2;
-//   transition-duration: 1s;
-//   transition-delay: 0s;
-//   transition-timing-function: ease-in-out;
-// }
-
-// @mixin on-hover-change-opacity($opacity-value) {
-//   &:hover {
-//     opacity: $opacity-value;
-//   }
-// }
-
-// @mixin on-hover-change-display($display-value) {
-//   &:hover {
-//     display: $display-value;
-//   }
-// }
-
-// @mixin on-hover-change-background {
-//   &:hover {
-//     background-color: $hover_background_color;
-//   }
-// }
 
 /* Global */
 * {
@@ -85,78 +50,79 @@ body {
     }
 
     &:hover {
-      color: #ffffff;
+      color: $footer_url_color_hover;
     }
   }
 }
 
 /* Portfolio Grid (level 2) */
 
-.tm__grid {
+.Portfolio-grid {
   &__container {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    row-gap: 20px;
-    column-gap: 20px;
-    justify-content: flex-start;
+    flex-flow: row wrap;
+    gap: 20px;
+    justify-content: space-evenly;
     align-items: flex-start;
-    align-content: flex-start;
+    align-content: stretch;
   }
 
   &__item {
-    flex-grow: 1;
+    flex: 1 1 400px;
     width: $tm_width;
+    align-self: center;
   }
 }
 
 /* Testimonial Card grid (level 1) */
 
-.tm__card {
+.tm-card {
   &__container {
     position: relative;
-    z-index: 0;
     display: grid;
     grid-template-rows: 350px 0px 150px;
-    row-gap: 0px;
+    gap: 0px;
     grid-auto-flow: column;
-    margin: 20px;
     min-height: ($tm_body_height + $tm_mid_height + $tm_footer_height);
     width: $tm_width;
+    max-width: 500px;
     border-radius: 20px;
     background-color: $hover_background_color;
-    opacity: 1;
-    transition-property: opacity;
-    transition-duration: 1s;
-    transition-delay: 0s;
-    transition-timing-function: ease-in-out;
 
-    &:hover {
-      opacity: 0.1;
+    &__overlay {
+      // (level 2)
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: $tm_width;
+      opacity: 0;
+      z-index: 10;
+      transition: all 1s ease;
+      border-radius: 20px;
+      background-color: $hover_background_color;
+      box-shadow: $shadow_color 0.2em 0.2em 0.3em;
     }
 
-    &:hover tm__card--on-top > button {
+    &:hover .tm-card__container__overlay {
       opacity: 1;
+    }
+    &:hover .tm-card__item {
+      opacity: 0;
     }
   }
 
-  &__card {
+  &__item {
     position: absolute;
     top: 0px;
     left: 0px;
     width: $tm_width;
     height: ($tm_body_height + $tm_mid_height + $tm_footer_height);
-    z-index: 10;
     border-radius: 20px;
-    box-shadow: grey 0.2em 0.2em 0.3em;
-    transition-property: opacity;
-    transition-duration: 1s;
-    transition-delay: 0s;
-    transition-timing-function: ease-in-out;
-
-    &:hover {
-      opacity: 0.1;
-    }
+    transition: all 1s ease;
+    box-shadow: $shadow_color 0.2em 0.2em 0.3em;
   }
 
   &__body {
@@ -199,28 +165,74 @@ body {
     border-radius: 0px 0px 20px 20px;
     background-color: $tm_footer_color;
   }
+}
 
-  &__on-top {
-    &--btn {
-      position: absolute;
-      top: -50%;
-      left: 39%;
-      opacity: 0;
-      // display: none;
-      color: white;
-      width: 120px;
-      height: 50px;
-      border-radius: 5px;
-      z-index: 50;
-      transition-property: opacity;
-      transition-duration: 1s;
-      transition-delay: 0s;
-      transition-timing-function: ease-in-out;
+.overlay {
+  // (level 2)
+  &__text {
+    color: $body_text_color_diapositive;
+    font-family: lato;
+    font-size: 20px;
+    position: absolute;
+    top: 38%;
+    bottom: auto;
+    left: 38%;
+    right: auto;
+    text-align: center;
+  }
+  &__btn {
+    // (level 2)
+    font-family: lato;
+    font-size: 16px;
+    background-color: $button_color_normal;
+    padding: 10%;
+    margin-top: 2rem;
+    height: 40px;
+    width: 100px;
+    padding: auto;
+    display: inline-block;
+    border-radius: 5px;
 
-      &:hover {
-        display: inline;
-        opacity: 1;
-      }
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      background-color: $button_color_hover;
+      color: $body_text_color;
+    }
+  }
+}
+
+// Social Media Buttons (Level 3)
+
+.sm-container {
+  position: static;
+  right: 0%;
+  top: 50%;
+  display: grid;
+
+  &__item {
+    width: 90px;
+    height: 80px;
+
+    &--blog {
+      background-color: #e17b77;
+    }
+
+    &--facebook {
+      background-color: #3b5998;
+    }
+
+    &--twitter {
+      background-color: #00aced;
+    }
+
+    &--linkedin {
+      background-color: #007bb6;
+    }
+
+    &--github {
+      background-color: #333;
     }
   }
 }
