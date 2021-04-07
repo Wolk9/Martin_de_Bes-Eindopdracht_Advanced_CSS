@@ -1,5 +1,161 @@
+@charset "UTF-8";
 /* Variables */
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+@import "./fontawesome.css";
+@import "./brands.css";
+@import "./solid.css";
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 25%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 25%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+.sm-container {
+  position: fixed;
+  right: 0px;
+  top: 40%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 100;
+}
+.sm-container__item {
+  position: relative;
+  width: 60px;
+  height: 50px;
+  font-family: lato;
+  font-weight: 400;
+  font-size: 16px;
+  color: #ffffff;
+  padding: 15px 0px 0px 20px;
+}
+.sm-container__item--blog {
+  background-color: #e17b77;
+  transition: width 1s ease-in-out;
+}
+.sm-container__item--blog:hover {
+  width: 350px;
+  padding-top: 10px;
+}
+.sm-container__item--blog:hover:hover {
+  width: 300px;
+  padding-top: 12px;
+  text-decoration: underline;
+}
+.sm-container__item--blog:hover:hover::after {
+  padding-left: 30pt;
+  -webkit-animation: fade 1s linear none 1 normal;
+          animation: fade 1s linear none 1 normal;
+  content: "Check out my blog";
+}
+.sm-container__item--blog::before {
+  text-decoration: none;
+  font-family: "Font Awesome 5 Brands";
+  font-weight: 400;
+  content: "";
+}
+.sm-container__item--facebook {
+  background-color: #3b5998;
+  transition: width 1s ease-in-out;
+}
+.sm-container__item--facebook:hover {
+  width: 300px;
+  padding-top: 12px;
+  text-decoration: underline;
+}
+.sm-container__item--facebook:hover::after {
+  padding-left: 30pt;
+  -webkit-animation: fade 1s linear none 1 normal;
+          animation: fade 1s linear none 1 normal;
+  content: "Like me on Facebook";
+}
+.sm-container__item--facebook::before {
+  text-decoration: none;
+  font-family: "Font Awesome 5 Brands";
+  font-weight: 400;
+  content: "";
+}
+.sm-container__item--twitter {
+  background-color: #00aced;
+  transition: width 1s ease-in-out;
+}
+.sm-container__item--twitter:hover {
+  width: 300px;
+  padding-top: 12px;
+  text-decoration: underline;
+}
+.sm-container__item--twitter:hover::after {
+  padding-left: 30pt;
+  -webkit-animation: fade 1s linear none 1 normal;
+          animation: fade 1s linear none 1 normal;
+  content: "Follow me on Twitter";
+}
+.sm-container__item--twitter::before {
+  text-decoration: none;
+  font-family: "Font Awesome 5 Brands";
+  font-weight: 400;
+  content: "";
+}
+.sm-container__item--linkedin {
+  background-color: #007bb6;
+  transition: width 1s ease-in-out;
+}
+.sm-container__item--linkedin:hover {
+  width: 300px;
+  padding-top: 12px;
+  text-decoration: underline;
+}
+.sm-container__item--linkedin:hover::after {
+  padding-left: 30pt;
+  -webkit-animation: fade 1s linear none 1 normal;
+          animation: fade 1s linear none 1 normal;
+  content: "Connect on LinkedIn";
+}
+.sm-container__item--linkedin::before {
+  text-decoration: none;
+  font-family: "Font Awesome 5 Brands";
+  font-weight: 400;
+  content: "";
+}
+.sm-container__item--github {
+  background-color: #333;
+  transition: width 1s ease-in-out;
+}
+.sm-container__item--github:hover {
+  width: 300px;
+  padding-top: 12px;
+  text-decoration: underline;
+}
+.sm-container__item--github:hover::after {
+  padding-left: 30pt;
+  -webkit-animation: fade 1s linear none 1 normal;
+          animation: fade 1s linear none 1 normal;
+  content: "See my projects at Github";
+}
+.sm-container__item--github::before {
+  text-decoration: none;
+  font-family: "Font Awesome 5 Brands";
+  font-weight: 400;
+  content: "";
+}
+
 /* Global */
 * {
   box-sizing: border-box;
@@ -55,14 +211,23 @@ body {
   display: flex;
   flex-flow: row wrap;
   gap: 20px;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  align-content: stretch;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
 }
 .Portfolio-grid__item {
-  flex: 1 1 400px;
+  flex: 0 1 400px;
   width: 100%;
   align-self: center;
+}
+.Portfolio-grid__item:nth-child(3n-1) .tm-card__footer {
+  background-color: #686de0;
+}
+.Portfolio-grid__item:nth-child(3n-2) .tm-card__footer {
+  background-color: #262dbc;
+}
+.Portfolio-grid__item:nth-child(3n-3) .tm-card__footer {
+  background-color: #151967;
 }
 
 /* Testimonial Card grid (level 1) */
@@ -74,7 +239,7 @@ body {
   grid-auto-flow: column;
   min-height: 500px;
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   border-radius: 20px;
   background-color: #222222;
 }
@@ -144,7 +309,6 @@ body {
   width: 100%;
   padding: 50px 5% 5% 5%;
   border-radius: 0px 0px 20px 20px;
-  background-color: #686de0;
 }
 
 .overlay__text {
@@ -175,30 +339,4 @@ body {
 .overlay__btn:hover {
   background-color: lightblue;
   color: #111111;
-}
-
-.sm-container {
-  position: static;
-  right: 0%;
-  top: 50%;
-  display: grid;
-}
-.sm-container__item {
-  width: 90px;
-  height: 80px;
-}
-.sm-container__item--blog {
-  background-color: #e17b77;
-}
-.sm-container__item--facebook {
-  background-color: #3b5998;
-}
-.sm-container__item--twitter {
-  background-color: #00aced;
-}
-.sm-container__item--linkedin {
-  background-color: #007bb6;
-}
-.sm-container__item--github {
-  background-color: #333;
 }/*# sourceMappingURL=styles.css.map */

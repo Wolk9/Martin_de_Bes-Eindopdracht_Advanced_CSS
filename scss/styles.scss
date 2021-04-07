@@ -1,8 +1,15 @@
 /* Variables */
 
-@use "./variables" as *;
+@use "./O_18_variables" as *;
+
+// Social Media Buttons (Level 3)
+
+@use "./socialmedia";
 
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+@import "./fontawesome.css";
+@import "./brands.css";
+@import "./solid.css";
 
 /* Global */
 * {
@@ -62,15 +69,24 @@ body {
     display: flex;
     flex-flow: row wrap;
     gap: 20px;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    align-content: stretch;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
   }
 
   &__item {
-    flex: 1 1 400px;
+    flex: 0 1 400px;
     width: $tm_width;
     align-self: center;
+    &:nth-child(3n - 1) .tm-card__footer {
+      background-color: $tm_footer_color;
+    }
+    &:nth-child(3n - 2) .tm-card__footer {
+      background-color: darken($tm_footer_color, 20%);
+    }
+    &:nth-child(3n - 3) .tm-card__footer {
+      background-color: darken($tm_footer_color, 40%);
+    }
   }
 }
 
@@ -85,7 +101,7 @@ body {
     grid-auto-flow: column;
     min-height: ($tm_body_height + $tm_mid_height + $tm_footer_height);
     width: $tm_width;
-    max-width: 500px;
+    max-width: 400px;
     border-radius: 20px;
     background-color: $hover_background_color;
 
@@ -163,7 +179,6 @@ body {
     width: $tm_width;
     padding: 50px 5% 5% 5%;
     border-radius: 0px 0px 20px 20px;
-    background-color: $tm_footer_color;
   }
 }
 
@@ -199,40 +214,6 @@ body {
     &:hover {
       background-color: $button_color_hover;
       color: $body_text_color;
-    }
-  }
-}
-
-// Social Media Buttons (Level 3)
-
-.sm-container {
-  position: static;
-  right: 0%;
-  top: 50%;
-  display: grid;
-
-  &__item {
-    width: 90px;
-    height: 80px;
-
-    &--blog {
-      background-color: #e17b77;
-    }
-
-    &--facebook {
-      background-color: #3b5998;
-    }
-
-    &--twitter {
-      background-color: #00aced;
-    }
-
-    &--linkedin {
-      background-color: #007bb6;
-    }
-
-    &--github {
-      background-color: #333;
     }
   }
 }

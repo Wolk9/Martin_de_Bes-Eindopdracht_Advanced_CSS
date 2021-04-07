@@ -1,0 +1,102 @@
+@use "./O_18_variables" as *;
+
+@mixin sm-icon($fa-code, $fa-weight, $fa-font-family) {
+  text-decoration: none;
+  font-family: $fa-font-family;
+  font-weight: $fa-weight;
+  content: $fa-code;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 25%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@mixin link-text($sm-link-text) {
+  &:hover {
+    width: 300px;
+    padding-top: 12px;
+    text-decoration: underline;
+    &::after {
+      padding-left: 30pt;
+      animation: fade 1s linear none 1 normal;
+      content: $sm-link-text;
+    }
+  }
+}
+
+.sm-container {
+  position: fixed;
+  right: 0px;
+  top: 40%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 100;
+
+  &__item {
+    position: relative;
+    width: 60px;
+    height: 50px;
+    font-family: lato;
+    font-weight: 400;
+    font-size: 16px;
+    color: $tm_body_color;
+    padding: 15px 0px 0px 20px;
+
+    &--blog {
+      background-color: #e17b77;
+      transition: width 1s ease-in-out;
+
+      &:hover {
+        width: 350px;
+        padding-top: 10px;
+        @include link-text("Check out my blog");
+      }
+      &::before {
+        @include sm-icon("\f19a", 400, "Font Awesome 5 Brands");
+      }
+    }
+
+    &--facebook {
+      background-color: #3b5998;
+      transition: width 1s ease-in-out;
+      @include link-text("Like me on Facebook");
+      &::before {
+        @include sm-icon("\f39e", 400, "Font Awesome 5 Brands");
+      }
+    }
+    &--twitter {
+      background-color: #00aced;
+      transition: width 1s ease-in-out;
+      @include link-text("Follow me on Twitter");
+      &::before {
+        @include sm-icon("\f099", 400, "Font Awesome 5 Brands");
+      }
+    }
+    &--linkedin {
+      background-color: #007bb6;
+      transition: width 1s ease-in-out;
+      @include link-text("Connect on LinkedIn");
+      &::before {
+        @include sm-icon("\f0e1", 400, "Font Awesome 5 Brands");
+      }
+    }
+    &--github {
+      background-color: #333;
+      transition: width 1s ease-in-out;
+      @include link-text("See my projects at Github");
+      &::before {
+        @include sm-icon("\f09b", 400, "Font Awesome 5 Brands");
+      }
+    }
+  }
+}
